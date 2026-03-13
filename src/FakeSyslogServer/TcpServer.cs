@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace FakeSyslogServer
 {
-    internal class TcpServer: ServerSocket
+    internal sealed class TcpServer : ServerSocket
     {
         private const int DefaultListeningSocketBacklog = 1000;
         private readonly ManualResetEvent signal;

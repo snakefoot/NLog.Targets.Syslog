@@ -18,6 +18,7 @@ namespace NLog.Targets.Syslog
     {
         private MessageBuilder messageBuilder;
         private AsyncLogger[] asyncLoggers;
+        private int _logCounter;
 
         /// <summary>The enforcement to be applied on the Syslog message</summary>
         public EnforcementConfig Enforcement { get; set; }
@@ -53,7 +54,7 @@ namespace NLog.Targets.Syslog
         {
             var logEvent = asyncLogEventInfo.LogEvent;
             PrecalculateVolatileLayouts(logEvent);
-            var asyncLoggerId = logEvent.SequenceID % Enforcement.MessageProcessors;
+            var asyncLoggerId = System.Threading.Interlocked.Increment(ref _logCounter) % Enforcement.MessageProcessors;
             asyncLoggers[asyncLoggerId].Log(asyncLogEventInfo);
         }
 

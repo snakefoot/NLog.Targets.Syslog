@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace FakeSyslogServer
 {
-    internal class UdpServer: ServerSocket
+    internal sealed class UdpServer : ServerSocket
     {
         private readonly ManualResetEvent signal;
 

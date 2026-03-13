@@ -8,7 +8,7 @@ using System.Text;
 
 namespace NLog.Targets.Syslog.MessageStorage
 {
-    internal class MultiEncodingStreamWriter : IDisposable
+    internal sealed class MultiEncodingStreamWriter : IDisposable
     {
         private readonly Dictionary<Encoding, StreamWriter> streamWriterForEncodingType;
 

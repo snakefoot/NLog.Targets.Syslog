@@ -1,10 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net472</TargetFrameworks>
     <RootNamespace>NLog.Targets.Syslog</RootNamespace>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <OutputType>Library</OutputType>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <ContinuousIntegrationBuild>false</ContinuousIntegrationBuild>
 
@@ -37,9 +35,7 @@
     <RepositoryUrl>https://github.com/jasells/NLog.Targets.Syslog</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageReleaseNotes>
-      Forked to update support for Xamarin.Android and Maui 8+ apps.
-      Removed .Net6 target, as any .Net6+ app codebase can consume .netstandard2.0, and thus this package is smaller.
-      Packed symbols to support SourceLink. 
+      Added support for NLog v6 by replacing SdIdConfig with SimpleLayout
     </PackageReleaseNotes>
     <RepositoryType>Git</RepositoryType>
 
@@ -61,9 +57,6 @@
     <None Include="..\..\LICENSE" Pack="True" PackagePath="" />
     <None Include="..\NLog.Targets.Syslog.png" Pack="true" PackagePath="" />
     <None Include="..\..\Docs\README.md" Pack="true" PackagePath="" />
-    <Content Include="bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).pdb" PackagePath="lib\$(TargetFramework)\$(AssemblyName).pdb">
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-    </Content>
     <!--<None Include="NLog.Targets.Syslog.snk" />-->
   </ItemGroup>
 </Project>

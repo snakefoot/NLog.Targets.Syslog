@@ -2,6 +2,7 @@
 // See the LICENSE file in the project root for more information
 
 using NLog.Config;
+using NLog.Layouts;
 using NLog.Targets.Syslog.Extensions;
 using System;
 using System.Collections.ObjectModel;
@@ -16,13 +17,13 @@ namespace NLog.Targets.Syslog.Settings
     [NLogConfigurationItem]
     public class SdElementConfig : NotifyPropertyChanged, IDisposable
     {
-        private SdIdConfig sdId;
+        private SimpleLayout sdId;
         private ObservableCollection<SdParamConfig> sdParams;
         private readonly PropertyChangedEventHandler sdParamPropsChanged;
         private readonly NotifyCollectionChangedEventHandler sdParamsCollectionChanged;
 
         /// <summary>The SD-ID field of an SD-ELEMENT field in the STRUCTURED-DATA part</summary>
-        public SdIdConfig SdId
+        public SimpleLayout SdId
         {
             get => sdId;
             set => SetProperty(ref sdId, value);
@@ -39,7 +40,7 @@ namespace NLog.Targets.Syslog.Settings
         /// <summary>Builds a new instance of the SdElement class</summary>
         public SdElementConfig()
         {
-            sdId = new SdIdConfig();
+            sdId = new SimpleLayout();
             sdParams = new ObservableCollection<SdParamConfig>();
             sdParamPropsChanged = (s, a) => OnPropertyChanged(nameof(SdParams));
             sdParamsCollectionChanged = CollectionChangedFactory(sdParamPropsChanged);
