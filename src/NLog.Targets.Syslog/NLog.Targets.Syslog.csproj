@@ -45,8 +45,7 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <!--<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>-->
-  
-</PropertyGroup>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
@@ -58,6 +57,9 @@
     <None Include="..\..\LICENSE" Pack="True" PackagePath="" />
     <None Include="..\NLog.Targets.Syslog.png" Pack="true" PackagePath="" />
     <None Include="..\..\Docs\README.md" Pack="true" PackagePath="" />
+    <Content Include="bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).pdb" PackagePath="lib\$(TargetFramework)\$(AssemblyName).pdb">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
     <!--<None Include="NLog.Targets.Syslog.snk" />-->
   </ItemGroup>
 </Project>
